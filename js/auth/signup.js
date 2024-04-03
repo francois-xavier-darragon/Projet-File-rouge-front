@@ -1,7 +1,7 @@
-const firstNameInput = document.getElementById("firstNameInput");
 const btnValidate = document.getElementById('btn-validate'); 
 const inputs = document.getElementsByTagName("input");
 const inputMail = document.getElementById('emailInput');
+const inputPassWord = document.getElementById('passWordInput');
 
 Array.from(inputs).forEach(input => {
     input.addEventListener("keyup", validateForm);
@@ -21,11 +21,13 @@ const checkInput = validateRequired(inputs);
 
 }
 
-function validateMail(input){
+function validate(input){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
     const mailUser = input.value
+    const passWordUser = input.value
   
-    if(mailUser.match(emailRegex)) {
+    if(mailUser.match(emailRegex) && passWordUser.match(passwordRegex)) {
         addIsvalid(input)
     } else {
         addIsInvalid(input)
@@ -33,15 +35,16 @@ function validateMail(input){
 }
 
 function validateRequired(inputs) {
-
+console.log(inputPassWord)
   const results = [];
 
   Array.from(inputs).forEach(input => {
   
       if (input.value != "") {
         addIsvalid(input)
-          if(input == inputMail) {
-            validateMail(input)
+        //Todo revoir le inputPassWord
+          if(input == inputMail && input == inputPassWord) {
+            validate(input)
           }
         results.push(true);
       } else {
