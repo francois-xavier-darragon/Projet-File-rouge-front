@@ -35,7 +35,7 @@ function validate(input, results){
     } else if(passWordUser.match(passwordRegex)) {
         addIsvalid(input)
         results.push(true)
-   } else if(passWordUser === validatePassWordInput && validatePassWordInput.match(passwordRegex)) {
+    } else if(passWordUser === validatePassWordInput && validatePassWordInput.match(passwordRegex)) {
         addIsvalid(input)
         results.push(true)
     } else {
