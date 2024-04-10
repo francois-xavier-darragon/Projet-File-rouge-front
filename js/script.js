@@ -55,13 +55,6 @@ function isConnected() {
   }
 }
 
-/*
-disconnected
-connected (admin ou client)
-    - admin
-    - client
-*/
-
 function showAndHideElementsForRoles() {
   const userConnected = isConnected();
   const role = getRole();
