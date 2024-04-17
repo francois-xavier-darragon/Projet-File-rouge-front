@@ -115,6 +115,7 @@ function userRegister() {
       
     })
     .then((result) => {
+      debugger;
       document.location.href="signin";
       console.log(result)
     })
