@@ -105,7 +105,7 @@ function userRegister() {
     redirect: "follow"
   };
 
-  fetch("http://127.0.0.1:8000/api/register", requestOptions)
+  fetch(apiUrl+"register", requestOptions)
     .then((response) => {
       if(response.ok){
         return response.json();
@@ -115,7 +115,7 @@ function userRegister() {
       
     })
     .then((result) => {
-      debugger;
+      
       document.location.href="signin";
       console.log(result)
     })

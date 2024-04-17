@@ -25,7 +25,7 @@ function checkCredentials() {
     redirect: "follow"
   };
 
-  fetch("http://127.0.0.1:8000/api/login", requestOptions)
+  fetch(apiUrl+"login", requestOptions)
     .then((response) => {
       if(response.ok){
         return response.json();
@@ -34,13 +34,11 @@ function checkCredentials() {
         inputPassWord.classList.remove("is-invalid");
       }
     })
-    .then((result) => {
-      debugger
-      const token = "fffbfdbdfbdfmgflgglfmlùfmfmlfùwmflmfmfùmfdfmù";
+    .then((result) => { 
+      const token = result.token;
       setToken(token);
-      //place ce token en cookie
-
-      setCookie(roleCookieName, "admin", 7);
+      
+      setCookie(roleCookieName, result.roles, 7);
       window.location.replace("/");
     })
     .catch((error) => console.error(error));
