@@ -36,10 +36,11 @@ function setCookie(name, value, days) {
 function getCookie(name) {
   let nameEQ = name + "=";
   let ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  for (const element of ca) {
+    let c = element;
+    while (c.startsWith(" ")) c = c.substring(1, c.length);
+    if (c.startsWith(nameEQ)) return c.substring(nameEQ.length, c.length);
+    
   }
   return null;
 }
@@ -49,11 +50,7 @@ function eraseCookie(name) {
 }
 
 function isConnected() {
-  if (getToken() == null || getToken == undefined) {
-    return false;
-  } else {
-    return true;
-  }
+  return !(getToken() == null || getToken == undefined);
 }
 
 function showAndHideElementsForRoles() {
@@ -86,4 +83,16 @@ function showAndHideElementsForRoles() {
         break;
     }
   });
+}
+
+/**
+ * Sanitize a string to make it safe for HTML rendering.
+ * 
+ * @param {string} string - The input string to sanitize.
+ * @returns {string} - The sanitized HTML string.
+ */
+function sanitizeHtml(string) {
+  const tempHtml = document.createElement('div');
+  tempHtml.textContent = string;
+  return tempHtml.innerHTML ;
 }
