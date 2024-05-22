@@ -4,7 +4,7 @@ const btnSignout = document.getElementById("btn-signout");
 const apiUrl = "http://127.0.0.1:8000/api/";
 
 btnSignout.addEventListener("click", signout);
-// getUserInfo();
+getUserInfo();
 
 function getRole() {
   return getCookie(roleCookieName);
@@ -20,18 +20,18 @@ function setToken(token) {
   setCookie(tokenCookieName, token, 7);
 }
 
-function getToken() {
+function getToken(){
   return getCookie(tokenCookieName);
 }
 
-function setCookie(name, value, days) {
-  let expires = "";
+function setCookie(name,value,days) {
+  var expires = "";
   if (days) {
-    let date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = "; expires=" + date.toUTCString();
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
   }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
 
 function getCookie(name) {
@@ -45,12 +45,17 @@ function getCookie(name) {
   return null;
 }
 
-function eraseCookie(name) {
-  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+function eraseCookie(name) {   
+  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-function isConnected() {
-  return !(getToken() == null || getToken == undefined);
+function isConnected(){
+  if(getToken() == null || getToken == undefined){
+      return false;
+  }
+  else{
+      return true;
+  }
 }
 
 function showAndHideElementsForRoles() {
@@ -98,9 +103,10 @@ function sanitizeHtml(string) {
 }
 
 function getUserInfo() {
-  let myHeaders = new Headers();
-  myHeaders.append("X-AUTH-TOKEN", getToken());
 
+  const myHeaders = new Headers();
+  myHeaders.append("X-AUTH-TOKEN", getToken());
+  
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
@@ -108,33 +114,19 @@ function getUserInfo() {
   };
 
   fetch(apiUrl + "account/me", requestOptions)
-    .then((response) => {
+    .then(response => {
       if (response.ok) {
-        response.json();
+        return response.json();
       } else {
         console.log("Impossible de récupérer les information utilisateur");
       }
     })
-    .then((result) => {
+    .then(result => {
       return result;
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(
-        "erreur lors de la récupération des information utilisateur"
+        "erreur lors de la récupération des information utilisateur", error
       );
     });
-
-  // const myHeaders = new Headers();
-  // myHeaders.append("X-AUTH-TOKEN", "5f58813316e4abceb5b4910d4dabe02234eac6fa");
-
-  // const requestOptions = {
-  //   method: "GET",
-  //   headers: myHeaders,
-  //   redirect: "follow"
-  // };
-
-  // fetch("http://127.0.0.1:8000/api/account/me", requestOptions)
-  //   .then((response) => response.text())
-  //   .then((result) => console.log(result))
-  //   .catch((error) => console.error(error));
 }
