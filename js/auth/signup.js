@@ -25,8 +25,7 @@ function validateForm() {
 
 function validate(input, results) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
   const mailUser = input.value;
   const passWordUser = input.value;
   const validatePassWordInput = input.value;
@@ -86,10 +85,10 @@ function addIsInvalid(input) {
 
 function userRegister() {
   let dataForm = new FormData(formRegister);
-
   const myHeaders = new Headers();
+  
   myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Cookie", "sf_redirect=%7B%22token%22%3A%22633fd7%22%2C%22route%22%3A%22app_api_register%22%2C%22method%22%3A%22POST%22%2C%22controller%22%3A%7B%22class%22%3A%22App%5C%5CController%5C%5CSecurityController%22%2C%22method%22%3A%22register%22%2C%22file%22%3A%22%5C%2Fvar%5C%2Fwww%5C%2Fhtml%5C%2FStudi%5C%2FProjet-file-rouge%5C%2FProjet-File-rouge-back%5C%2Fsrc%5C%2FController%5C%2FSecurityController.php%22%2C%22line%22%3A54%7D%2C%22status_code%22%3A201%2C%22status_text%22%3A%22Created%22%7D");
+  myHeaders.append("Cookie", "sf_redirect=%7B%22token%22%3A%22722893%22%2C%22route%22%3A%22app_api_register%22%2C%22method%22%3A%22POST%22%2C%22controller%22%3A%7B%22class%22%3A%22App%5C%5CController%5C%5CSecurityController%22%2C%22method%22%3A%22register%22%2C%22file%22%3A%22%5C%2Fvar%5C%2Fwww%5C%2Fhtml%5C%2FStudi%5C%2FProjet-file-rouge%5C%2FProjet-File-rouge-back%5C%2Fsrc%5C%2FController%5C%2FSecurityController.php%22%2C%22line%22%3A54%7D%2C%22status_code%22%3A201%2C%22status_text%22%3A%22Created%22%7D");
 
   const raw = JSON.stringify({
     "firstname": dataForm.get("firstName"),
@@ -112,11 +111,9 @@ function userRegister() {
       } else {
         alert("Erreur lors de l'inscription")
       }
-      
     })
     .then((result) => {
-      
-      document.location.href="signin";
+      document.location.href ="signin";
       console.log(result)
     })
     .catch((error) => console.error(error));
