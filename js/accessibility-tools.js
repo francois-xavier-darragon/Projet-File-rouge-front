@@ -7,7 +7,7 @@ document.getElementById('menu-toggle').addEventListener('click', function() {
     }
 });
 
-let fontSize = 20; 
+let fontSize = 22; 
 let maxFontSize = 32;
 
 document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListener('click', function() {
@@ -24,7 +24,7 @@ document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListen
 })
 
 document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListener('click', function() {
-    if (fontSize > 18) { 
+    if (fontSize > 20) { 
         fontSize -= 2; 
         document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
             if (element.tagName === 'H1') {
@@ -37,3 +37,8 @@ document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListe
         });
     }
 });
+
+document.querySelector('.accessibility-sidebar-item-resize-greyscale').addEventListener('click', function() {
+    document.documentElement.style.filter = 'grayscale(100%)';
+});
+

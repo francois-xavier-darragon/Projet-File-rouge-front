@@ -12079,7 +12079,7 @@ p {
   left: 0;
   top: 400px;
   width: 300px;
-  background-color: #343a40;
+  background-color: #392C1E;
   color: white;
   z-index: 1;
 }
@@ -12091,7 +12091,12 @@ p {
 
 #accessibility-sidebar li a {
   text-decoration: none;
-  color: white;
+  color: #B6AC97;
+  transition: color 0.3s ease;
+}
+
+#accessibility-sidebar li a:hover {
+  color: #906427;
 }
 
 .material-symbols-outlined {
