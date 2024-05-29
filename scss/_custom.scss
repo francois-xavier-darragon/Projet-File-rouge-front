@@ -6,8 +6,19 @@ $primary: #906427;
 $secondary: #B6AC97;
 $dark: #392C1E;
 $black: #292222;
+$inverted-primary: #e9d5d8;     
+$inverted-secondary: #494368;   
+$inverted-dark: #c6d3e4;       
+$inverted-black: #d6d9db;
 $font-family-sans-serif: "Montserrat", sans-serif !default;
 $font-family-serif: "Hind Madurai", serif !default;
+
+:root {
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --dark: #{$dark};
+    --black: #{$black};
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 

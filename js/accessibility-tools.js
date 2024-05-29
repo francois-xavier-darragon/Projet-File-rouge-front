@@ -50,4 +50,13 @@ document.querySelector('.accessibility-sidebar-item-resize-high-contrast').addEv
     document.documentElement.classList.toggle('high-contrast');
 });
 
+document.querySelector('.accessibility-sidebar-item-resize-negative-contrast').addEventListener('click', function() {
+    document.documentElement.classList.toggle('negative-contrast');
+});
+
+document.querySelector('.accessibility-sidebar-item-resize-light-background').addEventListener('click', function() {
+    document.documentElement.classList.toggle('light-background');
+});
+
+
 

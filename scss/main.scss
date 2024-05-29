@@ -94,13 +94,13 @@ p {
 }
 
 .form-label {
-  color: $primary;
+  color: var(--primary);
 }
 
 .allReservation {
   a{
     display: block;
-    color: $black;
+    color: var(--black);
     padding: 10px;
   }
 }
@@ -110,7 +110,7 @@ p {
   left: 0;
   top: 400px;
   width: 300px;
-  background-color: $dark;
+  background-color: var(--dark);
   color: white;
   z-index: 1;
 }
@@ -122,12 +122,12 @@ p {
 
 #accessibility-sidebar li a {
   text-decoration:none;
-  color: $secondary;
+  color: var(--secondary);
   transition: color 0.3s ease;
 }
 
 #accessibility-sidebar li a:hover {
-  color: $primary;
+  color: var(--primary);
 }
 
 .material-symbols-outlined{
@@ -154,4 +154,25 @@ body {
 .high-contrast * {
   background-color: inherit !important;
   color: inherit !important;
+}
+
+.light-background {
+  filter: grayscale(0%) !important;
+  background-color: #fff !important;
+  color: #000 !important; 
+}
+
+.light-background * {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+//TODO a terminer 
+.negative-contrast {
+  --primary: #{$inverted-primary};
+  --secondary: #{$inverted-secondary};
+  --dark: #{$inverted-dark};
+  --black: #{$inverted-black};
+  background-color: #000 !important;
+  color: #fff !important;
 }
