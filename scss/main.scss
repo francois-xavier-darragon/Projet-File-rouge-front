@@ -167,6 +167,22 @@ body {
   color: inherit !important;
 }
 
+.underline-links a {
+  text-decoration: underline !important;
+}
+
+.readable-font {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.readable-font * {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
 //TODO a terminer 
 .negative-contrast {
   --primary: #{$inverted-primary};
