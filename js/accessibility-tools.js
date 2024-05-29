@@ -1,5 +1,5 @@
 document.getElementById('menu-toggle').addEventListener('click', function() {
-    var sidebar = document.getElementById('accessibility-sidebar');
+    let sidebar = document.getElementById('accessibility-sidebar');
     if (sidebar.classList.contains('d-none')) {
         sidebar.classList.remove('d-none');
     } else {
@@ -7,70 +7,86 @@ document.getElementById('menu-toggle').addEventListener('click', function() {
     }
 });
 
-let fontSize = 18; 
+let fontSize = 20; 
 let maxFontSize = 32;
+
+function adjustAccessibilitySidebarPosition() {
+    let accessibilitySidebar = document.getElementById('accessibility-sidebar');
+    let fontSize = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size'));
+    let topPosition = 300 + fontSize; 
+    console.log(topPosition)
+    accessibilitySidebar.style.top = topPosition + 'px';
+}
 
 function adjustFontSize() {
     document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
         if (document.body.classList.contains('readable-font')) {
             element.style.fontSize = `${fontSize * 1.2}px`;
         } else {
-            if (element.tagName === 'H1') {
-                element.style.fontSize = '2.5rem';
-            } else if (element.tagName === 'H2') {
-                element.style.fontSize = '2rem';
-            } else {
-                element.style.fontSize = `${fontSize}px`;
+            switch (element.tagName) {
+                case 'H1':
+                    element.style.fontSize = '2.5rem';
+                    break;
+                case 'H2':
+                    element.style.fontSize = '2rem';
+                    break;
+                default:
+                    element.style.fontSize = `${fontSize}px`;
+                    break;
             }
         }
     });
 }
 
-document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListener('click', function() {
+function increaseFontSize() {
     if (fontSize < maxFontSize) {
         fontSize += 2; 
         if (fontSize > maxFontSize) {
             fontSize = maxFontSize;
         }
         adjustFontSize();
+        adjustAccessibilitySidebarPosition();
     }
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListener('click', function() {
+function decreaseFontSize() {
     if (fontSize > 20) { 
-        fontSize -= 2; 
+        fontSize -= 2;
+        adjustFontSize();
+    } else {
+        document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
+            element.style.fontSize = '';
+        });
+        element.style.fontSize = '';
         adjustFontSize();
     }
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-greyscale').addEventListener('click', function() {
-    if (document.documentElement.style.filter === 'grayscale(100%)') {
-        document.documentElement.style.filter = '';
-    } else {
-        document.documentElement.style.filter = 'grayscale(100%)';
-    }
-});
 
-document.querySelector('.accessibility-sidebar-item-resize-high-contrast').addEventListener('click', function() {
+function toggleGreyscale() {
+    document.documentElement.style.filter = document.documentElement.style.filter === 'grayscale(100%)' ? '' : 'grayscale(100%)';
+}
+
+function toggleContrast() {
     document.documentElement.classList.toggle('high-contrast');
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-negative-contrast').addEventListener('click', function() {
+function toggleNegativeContrast() {
     document.documentElement.classList.toggle('negative-contrast');
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-light-background').addEventListener('click', function() {
+function toggleLightBackground() {
     document.documentElement.classList.toggle('light-background');
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-underline-links').addEventListener('click', function() {
+function toggleUnderlineLinks() {
     document.body.classList.toggle('underline-links');
-});
+}
 
-document.querySelector('.accessibility-sidebar-item-resize-readable-font').addEventListener('click', function() {
+function toggleReadableFont() {
     document.body.classList.toggle('readable-font');
     adjustFontSize();
-});
+}
 
 function resetStyles() {
     document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
@@ -79,10 +95,17 @@ function resetStyles() {
 
     document.body.classList.remove('high-contrast', 'negative-contrast', 'light-background', 'underline-links', 'readable-font');
 
-    document.body.style.filter = '';
+    document.documentElement.style.filter = '';
 }
 
-document.querySelector('.accessibility-sidebar-item-resize-reset').addEventListener('click', function() {
-    resetStyles();
-});
+document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListener('click', increaseFontSize);
+document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListener('click', decreaseFontSize);
+document.querySelector('.accessibility-sidebar-item-resize-greyscale').addEventListener('click', toggleGreyscale);
+document.querySelector('.accessibility-sidebar-item-resize-high-contrast').addEventListener('click', toggleContrast);
+document.querySelector('.accessibility-sidebar-item-resize-negative-contrast').addEventListener('click', toggleNegativeContrast);
+document.querySelector('.accessibility-sidebar-item-resize-light-background').addEventListener('click', toggleLightBackground);
+document.querySelector('.accessibility-sidebar-item-resize-underline-links').addEventListener('click', toggleUnderlineLinks);
+document.querySelector('.accessibility-sidebar-item-resize-readable-font').addEventListener('click', toggleReadableFont);
+document.querySelector('.accessibility-sidebar-item-resize-reset').addEventListener('click', resetStyles);
+
 
