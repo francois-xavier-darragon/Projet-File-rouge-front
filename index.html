@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="scss/main.css/" />
     <title>Document</title>
   </head>
   <body>
     <header>
+      <!-- Main navigation links -->      
       <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Quai Antique</a>
@@ -57,10 +56,99 @@
       </nav>
     </header>
 
+    
+    <aside >
+      <button id="menu-toggle" class="btn btn-primary">
+        <!--<i class="fas fa-bars"> </i>--> 
+        <span class="material-symbols-outlined"> accessible_forward </span>
+      </button>
+      <!-- Accessibility tools -->
+      <div id="sidebar" class="d-none">
+        <nav>
+          <ul>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="resize-plus" data-action-group="resize" tabindex="-1" role="button">
+              <span><span class="material-symbols-outlined">
+                zoom_in
+              </span>
+              <title>Augmenter la taille du texte</title> Augmenter la taille du texte </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="resize-minus" data-action-group="resize" tabindex="-1" role="button">
+              <span><span class="material-symbols-outlined">
+                zoom_out
+              </span>
+              <title>Diminuer la taille du texte</title> Diminuer la taille du texte </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="grayscale" data-action-group="resize" tabindex="-1" role="button">
+              <span><span class="material-symbols-outlined">
+                barcode
+              </span>
+              <title>Mettre la page en noire et blanc</title> Mettre la page en noire et blanc</span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="high-contrast" data-action-group="resize" tabindex="-1" role="button">
+              <span><span class="material-symbols-outlined">
+                contrast
+              </span>
+              <title>Augmente le contraste entre </title> Augmente le contraste </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="negative-contrast" data-action-group="resize" tabindex="-1" role="button">
+              <span><span class="material-symbols-outlined">
+                visibility
+              </span>
+              <title>Mettre le contrast en négatif</title> Mettre le contrast en négatif </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="light-background" data-action-group="resize" tabindex="-1" role="button">
+              <span class="material-symbols-outlined">
+                backlight_high
+                </span>
+              <title>Arrière-plan en blanc</title> Arrière-plan en blanc </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="links-underline" data-action-group="resize" tabindex="-1" role="button">
+              <span class="material-symbols-outlined">
+                format_underlined
+                </span>
+              <title>Souligner les liens</title> Souligner les liens </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="readable-font" data-action-group="resize" tabindex="-1" role="button">
+              <span class="material-symbols-outlined">
+                text_format
+                </span>
+              <title>Police visible </title> Police visible </span>								
+            </a>
+            </li>
+            <li class="pojo-a11y-toolbar-item">
+              <a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="reset" data-action-group="resize" tabindex="-1" role="button">
+              <span class="material-symbols-outlined">
+                refresh
+                </span>
+              <title>Réinitialiser</title> Réinitialiser </span>								
+            </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  
+
     <main id="main-page">
-      <!--Le contenu de la page sera injecté ici-->
+      <!--The page content will be injected here-->
     </main>
 
+    <!--footer-->
     <footer class="bg-dark text-white text-center footer">
       <div class="row">
         <div class="col-12 col-lg-4">
@@ -81,6 +169,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/accessibility-tools.js"></script>
     <script type="module" src="Router/router.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>

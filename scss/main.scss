@@ -104,3 +104,29 @@ p {
     padding: 10px;
   }
 }
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 400px;
+  width: 300px;
+  background-color: #343a40;
+  color: white;
+  z-index: 1;
+}
+
+#sidebar li {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+#sidebar li a{
+  text-decoration:none;
+}
+
+#menu-toggle {
+  position: fixed;
+  left: 0px;
+  top: 355px;
+  z-index: 1001;
+}
