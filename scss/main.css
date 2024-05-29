@@ -12074,7 +12074,7 @@ p {
   padding: 10px;
 }
 
-#sidebar {
+#accessibility-sidebar {
   position: fixed;
   left: 0;
   top: 400px;
@@ -12084,13 +12084,18 @@ p {
   z-index: 1;
 }
 
-#sidebar li {
+#accessibility-sidebar li {
   list-style-type: none;
   margin-top: 10px;
 }
 
-#sidebar li a {
+#accessibility-sidebar li a {
   text-decoration: none;
+  color: white;
+}
+
+.material-symbols-outlined {
+  margin-right: 4px;
 }
 
 #menu-toggle {
@@ -12098,4 +12103,8 @@ p {
   left: 0px;
   top: 355px;
   z-index: 1001;
+}
+
+body {
+  transition: transform 0.3s ease;
 }/*# sourceMappingURL=main.css.map */

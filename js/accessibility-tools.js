@@ -1,8 +1,39 @@
 document.getElementById('menu-toggle').addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
+    var sidebar = document.getElementById('accessibility-sidebar');
     if (sidebar.classList.contains('d-none')) {
         sidebar.classList.remove('d-none');
     } else {
         sidebar.classList.add('d-none');
+    }
+});
+
+let fontSize = 20; 
+let maxFontSize = 32;
+
+document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListener('click', function() {
+    
+    if (fontSize < maxFontSize) {
+        fontSize += 2; 
+        if (fontSize > maxFontSize) {
+            fontSize = maxFontSize;
+        }
+        document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
+            element.style.fontSize = `${fontSize}px`;
+        });
+    }
+})
+
+document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListener('click', function() {
+    if (fontSize > 18) { 
+        fontSize -= 2; 
+        document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
+            if (element.tagName === 'H1') {
+                element.style.fontSize = '2.5rem';
+            } else if (element.tagName === 'H2') {
+                element.style.fontSize = '2rem';
+            } else {
+                element.style.fontSize = `${fontSize}px`;
+            }
+        });
     }
 });
