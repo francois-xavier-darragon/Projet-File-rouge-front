@@ -39,6 +39,15 @@ document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListe
 });
 
 document.querySelector('.accessibility-sidebar-item-resize-greyscale').addEventListener('click', function() {
-    document.documentElement.style.filter = 'grayscale(100%)';
+    if (document.documentElement.style.filter === 'grayscale(100%)') {
+        document.documentElement.style.filter = '';
+    } else {
+        document.documentElement.style.filter = 'grayscale(100%)';
+    }
 });
+
+document.querySelector('.accessibility-sidebar-item-resize-high-contrast').addEventListener('click', function() {
+    document.documentElement.classList.toggle('high-contrast');
+});
+
 

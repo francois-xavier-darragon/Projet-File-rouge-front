@@ -12112,4 +12112,15 @@ p {
 
 body {
   transition: transform 0.3s ease;
+}
+
+.high-contrast {
+  filter: grayscale(0%) !important;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast * {
+  background-color: inherit !important;
+  color: inherit !important;
 }/*# sourceMappingURL=main.css.map */
