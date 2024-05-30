@@ -10,13 +10,14 @@ document.getElementById('menu-toggle').addEventListener('click', function() {
 let fontSize = 20; 
 let maxFontSize = 32;
 
-function adjustAccessibilitySidebarPosition() {
-    let accessibilitySidebar = document.getElementById('accessibility-sidebar');
-    let fontSize = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size'));
-    let topPosition = 300 + fontSize; 
-    console.log(topPosition)
-    accessibilitySidebar.style.top = topPosition + 'px';
-}
+//TODO a corriger
+// function adjustAccessibilitySidebarPosition() {
+//     let accessibilitySidebar = document.getElementById('accessibility-sidebar');
+//     let fontSize = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size'));
+//     let topPosition = 300 + fontSize; 
+//     console.log(topPosition)
+//     accessibilitySidebar.style.top = topPosition + 'px';
+// }
 
 function adjustFontSize() {
     document.querySelectorAll('p, h1, h2, a').forEach(function(element) {
@@ -45,7 +46,7 @@ function increaseFontSize() {
             fontSize = maxFontSize;
         }
         adjustFontSize();
-        adjustAccessibilitySidebarPosition();
+        // adjustAccessibilitySidebarPosition();
     }
 }
 
@@ -62,16 +63,46 @@ function decreaseFontSize() {
     }
 }
 
-
 function toggleGreyscale() {
     document.documentElement.style.filter = document.documentElement.style.filter === 'grayscale(100%)' ? '' : 'grayscale(100%)';
 }
 
 function toggleContrast() {
+    
     document.documentElement.classList.toggle('high-contrast');
 }
 
 function toggleNegativeContrast() {
+    const elements = document.querySelectorAll('.bg-dark, .inverted-dark, .btn-primary, .inverted-btn-primary, .text-primary, .inverted-text-primary, .bg-black, .inverted-bg-black, .bg-white, .inverted-bg-white, .text-black, .inverted-text-black, .text-white, .inverted-text-white', );
+
+    const classMappings = {
+        'bg-dark': 'inverted-dark',
+        'inverted-dark': 'bg-dark',
+        'btn-primary': 'inverted-btn-primary',
+        'inverted-btn-primary': 'btn-primary',
+        'text-primary': 'inverted-text-primary',
+        'inverted-text-primary': 'text-primary',
+        'bg-black': 'inverted-bg-black',
+        'inverted-bg-black': 'bg-black',
+        'bg-white': 'inverted-bg-white',
+        'inverted-bg-white': 'bg-white',
+        'text-black': 'inverted-text-black',
+        'inverted-text-black': 'text-black',
+        'text-white': 'inverted-text-white',
+        'inverted-text-white': 'text-white'
+    };
+
+    elements.forEach(htmlElement => {
+        for (const originalClass in classMappings) {
+            if (htmlElement.classList.contains(originalClass)) {
+                const invertedClass = classMappings[originalClass];
+                htmlElement.classList.remove(originalClass);
+                htmlElement.classList.add(invertedClass);
+                break;
+            }
+        }
+    });
+    
     document.documentElement.classList.toggle('negative-contrast');
 }
 
@@ -98,14 +129,19 @@ function resetStyles() {
     document.documentElement.style.filter = '';
 }
 
-document.querySelector('.accessibility-sidebar-item-resize-plus').addEventListener('click', increaseFontSize);
-document.querySelector('.accessibility-sidebar-item-resize-minus').addEventListener('click', decreaseFontSize);
-document.querySelector('.accessibility-sidebar-item-resize-greyscale').addEventListener('click', toggleGreyscale);
-document.querySelector('.accessibility-sidebar-item-resize-high-contrast').addEventListener('click', toggleContrast);
-document.querySelector('.accessibility-sidebar-item-resize-negative-contrast').addEventListener('click', toggleNegativeContrast);
-document.querySelector('.accessibility-sidebar-item-resize-light-background').addEventListener('click', toggleLightBackground);
-document.querySelector('.accessibility-sidebar-item-resize-underline-links').addEventListener('click', toggleUnderlineLinks);
-document.querySelector('.accessibility-sidebar-item-resize-readable-font').addEventListener('click', toggleReadableFont);
-document.querySelector('.accessibility-sidebar-item-resize-reset').addEventListener('click', resetStyles);
+const accessibilityItems = [
+    { selector: '.accessibility-sidebar-item-resize-plus', handler: increaseFontSize },
+    { selector: '.accessibility-sidebar-item-resize-minus', handler: decreaseFontSize },
+    { selector: '.accessibility-sidebar-item-resize-greyscale', handler: toggleGreyscale },
+    { selector: '.accessibility-sidebar-item-resize-high-contrast', handler: toggleContrast },
+    { selector: '.accessibility-sidebar-item-resize-negative-contrast', handler: toggleNegativeContrast },
+    { selector: '.accessibility-sidebar-item-resize-light-background', handler: toggleLightBackground },
+    { selector: '.accessibility-sidebar-item-resize-underline-links', handler: toggleUnderlineLinks },
+    { selector: '.accessibility-sidebar-item-resize-readable-font', handler: toggleReadableFont },
+    { selector: '.accessibility-sidebar-item-resize-reset', handler: resetStyles }
+];
 
+accessibilityItems.forEach(item => {
+    document.querySelector(item.selector).addEventListener('click', item.handler);
+});
 

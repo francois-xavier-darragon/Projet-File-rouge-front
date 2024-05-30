@@ -12160,10 +12160,46 @@ body {
 }
 
 .negative-contrast {
-  --primary: #e9d5d8;
+  --primary: #8F8284;
   --secondary: #494368;
   --dark: #c6d3e4;
   --black: #d6d9db;
   background-color: #000 !important;
   color: #fff !important;
+}
+
+.inverted-dark {
+  background-color: #c6d3e4;
+}
+
+.inverted-btn-primary {
+  background-color: #8F8284;
+}
+
+.inverted-text-primary {
+  color: #8F8284;
+}
+
+.inverted-bg-black {
+  background-color: #d6d9db;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.inverted-bg-white {
+  background-color: #000;
+}
+
+.text-black {
+  color: #000;
+}
+
+.inverted-text-black {
+  color: yellow;
+}
+
+.inverted-text-white {
+  color: #494368;
 }/*# sourceMappingURL=main.css.map */

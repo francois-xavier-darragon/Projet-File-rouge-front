@@ -192,3 +192,39 @@ body {
   background-color: #000 !important;
   color: #fff !important;
 }
+
+.inverted-dark {
+  background-color: $inverted-dark;
+}
+
+.inverted-btn-primary {
+  background-color: $inverted-primary; 
+}
+
+.inverted-text-primary {
+  color: $inverted-primary;
+}
+
+.inverted-bg-black {
+  background-color: $inverted-black;
+}
+
+.bg-white{
+  background-color: #fff;
+}
+
+.inverted-bg-white {
+  background-color: #000;
+}
+
+.text-black{
+  color: #000;
+}
+
+.inverted-text-black{
+  color: yellow;
+}
+ 
+.inverted-text-white {
+  color: $inverted-secondary
+}
