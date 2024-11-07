@@ -24,4 +24,15 @@ jobs:
         ftp_password: ${{ secrets.ftp_password }}
         local_source_dir: "."
         dist_target_dir: "www"
-        exclude: "^.git/,^node_modules/bootstrap/scss/,^node_modules/bootstrap/js/,^node_modules/bootstrap-icons/icons/"
+        exclude: >-
+          ^\.git.*,
+          ^\.github/,
+          ^node_modules/bootstrap/scss/,
+          ^node_modules/bootstrap/js/,
+          ^node_modules/bootstrap-icons/icons/,
+          \.gitignore$,
+          \.env.*,
+          ^\.vscode/,
+          ^\.idea/,
+          README\.md,
+          package-lock\.json
