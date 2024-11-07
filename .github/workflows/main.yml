@@ -27,11 +27,11 @@ jobs:
       uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
       with:
         ftp_host: ftp-quai-antique.alwaysdata.net
-        ftp_username: quai-antique
-        ftp_password: ${{ secrets.ftp_password }}
+        username: quai-antique
+        password: ${{ secrets.ftp_password }}
         local_source_dir: "build"
         dist_target_dir: "www"
-        delete: "true"
+        delete: "true"           # On garde "true" comme dans la version qui fonctionnait
         exclude: >-
           ^\.git/,
           ^\.github/,
