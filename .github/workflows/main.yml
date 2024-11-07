@@ -31,7 +31,8 @@ jobs:
         ftp_password: ${{ secrets.ftp_password }}
         local_source_dir: "build"
         dist_target_dir: "www"
-        delete: "true"
+        delete: "false"
+        only_newer: "true"
         exclude: >-
           ^\.git/,
           ^\.github/,
