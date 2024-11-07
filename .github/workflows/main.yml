@@ -31,7 +31,8 @@ jobs:
         ftp_password: ${{ secrets.ftp_password }}
         local_source_dir: "build"
         dist_target_dir: "www"
-        delete: "true"
+        delete: "true"          # Garde delete: true pour assurer la propreté
+        ignore_time: "true"     # Ignore les horodatages pour forcer la mise à jour
         exclude: >-
           ^node_modules/bootstrap/scss/,
           ^node_modules/bootstrap/js/,
