@@ -28,6 +28,7 @@ jobs:
         security: loose
         dangerous-clean-slate: false
         log-level: verbose
+        port: 21
         timeout: 90000
         dry-run: false
         exclude: |
