@@ -19,7 +19,8 @@ jobs:
     - name: 📂 Prepare build directory
       run: |
         mkdir build
-        cp -r css scss js images pages Router index.html build/
+        cp -r scss js images pages Router index.html build/
+        [ -d "css" ] && cp -r css build/ || true
         cp package.json build/
 
     - name: 📂 Deploy to Server
