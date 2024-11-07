@@ -23,6 +23,12 @@ jobs:
         [ -d "css" ] && cp -r css build/ || true
         cp package.json build/
 
+        mkdir -p build/node_modules/bootstrap/dist/js/
+        mkdir -p build/node_modules/bootstrap-icons/font/
+        cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js build/node_modules/bootstrap/dist/js/
+        cp node_modules/bootstrap-icons/font/bootstrap-icons.css build/node_modules/bootstrap-icons/font/
+        cp -r node_modules/bootstrap-icons/font/fonts build/node_modules/bootstrap-icons/font/
+
     - name: 📂 Deploy to Server
       uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
       with:
