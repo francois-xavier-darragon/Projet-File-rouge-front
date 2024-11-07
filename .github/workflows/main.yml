@@ -26,9 +26,11 @@ jobs:
         server-dir: /www/
         protocol: ftps
         port: 21
-        security: strict
+        security: loose
         forceSsl: true
         timeout: 60000
+        retryCount: 5
+        verbose: true 
         exclude: |
           **/.git*
           **/.git*/**
