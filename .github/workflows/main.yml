@@ -24,7 +24,7 @@ jobs:
         username: quai-antique
         password: ${{ secrets.ftp_password }}
         server-dir: /www/
-        protocol: ftp
+        protocol: ftps
         port: 21
         timeout: 90000
         dry-run: false
