@@ -11,10 +11,10 @@ jobs:
     - name: 📂 Install dependecies
       uses: actions/setup-node@v2
       with:
-        node-version: "18"
+        node-version: '18'
 
     - name: 📂 Install npm dependecies
-      run: npm install
+      run: npm ci
    
     
     - name: 📂 Sync files
@@ -25,7 +25,10 @@ jobs:
         password: ${{ secrets.ftp_password }}
         server-dir: /www/
         protocol: ftps
-        security: strict
+        security: loose
+        dangerous-clean-slate: false
+        log-level: verbose
+        timeout: 60000
         exclude: |
           **/.git*
           **/.git*/**
