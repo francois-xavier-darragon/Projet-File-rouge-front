@@ -24,7 +24,7 @@ jobs:
         username: quai-antique
         password: ${{ secrets.ftp_password }}
         server-dir: /www/
-        protocol: ftps-legacy   
+        protocol: ftp  
         security: loose
         dangerous-clean-slate: false
         log-level: verbose
