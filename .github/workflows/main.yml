@@ -15,24 +15,28 @@ jobs:
         
     - name: 📂 Install npm dependecies
       run: npm ci
-   
+
+    - name: 📂 Prepare build directory
+      run: |
+        mkdir build
+        cp -r css scss js images pages Router index.html build/
+        cp package.json build/
+
     - name: 📂 Deploy to Server
       uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
       with:
         ftp_host: ftp-quai-antique.alwaysdata.net
         ftp_username: quai-antique
         ftp_password: ${{ secrets.ftp_password }}
-        local_source_dir: "."
+        local_source_dir: "build"
         dist_target_dir: "www"
+        delete: "true"
         exclude: >-
-          ^\.git.*,
-          ^\.github/,
           ^node_modules/bootstrap/scss/,
           ^node_modules/bootstrap/js/,
           ^node_modules/bootstrap-icons/icons/,
+          ^\.git/,
+          ^\.github/,
           \.gitignore$,
-          \.env.*,
-          ^\.vscode/,
-          ^\.idea/,
           README\.md,
           package-lock\.json
