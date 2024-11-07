@@ -31,14 +31,12 @@ jobs:
         ftp_password: ${{ secrets.ftp_password }}
         local_source_dir: "build"
         dist_target_dir: "www"
-        delete: "true"          # Garde delete: true pour assurer la propreté
-        ignore_time: "true"     # Ignore les horodatages pour forcer la mise à jour
+        delete: "true"
         exclude: >-
-          ^node_modules/bootstrap/scss/,
-          ^node_modules/bootstrap/js/,
-          ^node_modules/bootstrap-icons/icons/,
           ^\.git/,
           ^\.github/,
           \.gitignore$,
+          ^node_modules/,
           README\.md,
-          package-lock\.json
+          package-lock\.json,
+          ^build/
